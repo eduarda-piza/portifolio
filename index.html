@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Madu Piza — Portfólio de Gestão de Marketing</title>
+<meta name="description" content="Portfólio de Madu Piza, gestora de marketing digital em Londrina/PR. Estratégia, produção de conteúdo, tráfego pago e análise de métricas para negócios locais.">
+<meta property="og:title" content="Madu Piza — Portfólio de Gestão de Marketing Digital">
+<meta property="og:description" content="Estratégia, produção de conteúdo, tráfego pago e análise de métricas para negócios locais em Londrina/PR.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Madu Piza — Portfólio de Gestão de Marketing Digital">
+<meta name="twitter:description" content="Estratégia, produção de conteúdo, tráfego pago e análise de métricas para negócios locais em Londrina/PR.">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -74,8 +82,10 @@
   }
   .hero h1 em {
     font-style: italic;
-    background: linear-gradient(135deg, var(--roxo), var(--rosa));
+    background: linear-gradient(270deg, var(--roxo), var(--rosa), var(--roxo-claro), var(--roxo));
+    background-size: 300% 300%;
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    animation: gradShift 6s ease infinite;
   }
   .hero-desc { font-size: 1.05rem; line-height: 1.72; color: var(--texto-suave); max-width: 500px; margin-bottom: 2.5rem; }
   .hero-cta {
@@ -94,7 +104,7 @@
   .hero-stat-num { font-family: 'Instrument Serif', serif; font-size: 1.9rem; color: var(--roxo); display: block; }
   .hero-stat-label { font-size: 0.78rem; color: var(--texto-suave); margin-top: 0.15rem; line-height: 1.4; }
 
-  /* HERO FOTO — maior no desktop, sem vazio */
+  /* HERO FOTO */
   .hero-foto-wrapper {
     position: relative; z-index: 1; flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
@@ -159,6 +169,23 @@
     border-radius: 100px; transition: color 0.2s, border-color 0.2s, background 0.2s;
   }
   .case-ig-link:hover { color: white; border-color: rgba(255,255,255,0.45); background: rgba(255,255,255,0.07); }
+  .case-encerrado {
+    display: inline-block; font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.09em; text-transform: uppercase;
+    color: rgba(255,255,255,0.45); border: 1px solid rgba(255,255,255,0.18);
+    padding: 0.2rem 0.65rem; border-radius: 100px; margin-left: 0.6rem;
+    vertical-align: middle;
+  }
+  .case-duracao {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    font-size: 0.71rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5); margin-top: 0.7rem;
+  }
+  .case-duracao-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--rosa-claro); flex-shrink: 0; }
+  .print-nota {
+    font-size: 0.75rem; color: var(--texto-suave); font-style: italic;
+    margin-top: 0.5rem; line-height: 1.45; text-align: center; padding: 0 0.3rem;
+  }
   .case-body { padding: 2rem; }
   .metrics-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.9rem; margin-bottom: 1.8rem; }
   .metric-box { background: white; border-radius: 13px; padding: 1.1rem 0.9rem; border: 1px solid rgba(123,79,187,0.09); text-align: center; }
@@ -188,7 +215,7 @@
   .ptab-content { display: none; }
   .ptab-content.active { display: block; }
 
-  /* Aviso de interacao */
+  /* Aviso de interação */
   .portfolio-aviso {
     display: inline-flex; align-items: center; gap: 0.45rem;
     font-size: 0.78rem; color: var(--texto-suave);
@@ -196,14 +223,14 @@
     padding: 0.45rem 1rem; border-radius: 100px; margin-bottom: 1.5rem;
   }
 
-  /* Grid de thumbnails de video */
+  /* Grid de thumbnails de vídeo */
   .portfolio-video-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 1rem;
   }
 
-  /* Card de video clicavel */
+  /* Card de vídeo clicável */
   .video-card {
     border-radius: 14px; overflow: hidden; background: #111;
     border: 1px solid rgba(123,79,187,0.10); aspect-ratio: 9/16;
@@ -237,7 +264,7 @@
     font-weight: 500; letter-spacing: 0.02em; text-align: center; padding: 0 0.5rem;
   }
 
-  /* Modal de video 9:16 */
+  /* Modal de vídeo 9:16 */
   .video-modal {
     display: none; position: fixed; inset: 0; z-index: 999;
     background: rgba(10,5,20,0.94); align-items: center; justify-content: center;
@@ -262,7 +289,7 @@
   }
   .video-modal-close:hover { opacity: 1; }
 
-  /* Grid de criativos e portfolio items */
+  /* Grid de criativos e portfólio */
   .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
   .portfolio-item {
     border-radius: 14px; overflow: hidden; background: white;
@@ -275,6 +302,17 @@
   .portfolio-item img { width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; inset: 0; border-radius: 14px; }
   .portfolio-item .pi-icon { font-size: 1.7rem; }
   .criativos-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+
+  /* Agrupamento por cliente no portfólio */
+  .portfolio-client-section { margin-bottom: 2.8rem; }
+  .portfolio-client-title {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase;
+    color: var(--texto-suave); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .portfolio-client-title::after {
+    content: ''; flex: 1; height: 1px; background: rgba(123,79,187,0.13);
+  }
 
   /* Prints */
   .prints-titulo { font-size: 0.73rem; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--texto-suave); margin-bottom: 0.9rem; }
@@ -393,6 +431,28 @@
     .hero-stats { flex-direction: column; gap: 1rem; align-items: center; }
   }
 
+  /* ANIMAÇÕES EXTRAS */
+  @keyframes gradShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  @keyframes floatPhoto {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  .hero-foto-img { animation: floatPhoto 5s ease-in-out 1.5s infinite; }
+
+  /* Reveal lateral — para tags de seção */
+  .reveal-left {
+    opacity: 0; transform: translateX(-18px);
+    transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1);
+  }
+  .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+  /* Reveal com escala para cards de métrica */
+  .metric-box.reveal { transform: translateY(16px) scale(0.96); }
+  .metric-box.reveal.visible { transform: translateY(0) scale(1); transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22,1,0.36,1), box-shadow 0.22s ease; }
+
   /* ANIMATIONS */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -470,25 +530,31 @@
     <div class="hero-tag">Gestão de Marketing Digital</div>
     <h1>Marketing que <em>pensa</em><br>antes de postar.</h1>
     <p class="hero-desc">
-      Sou a Madu. Cuido da estratégia, do conteúdo, do criativo, da câmera e dos anúncios. Não entrego só post: entrego estratégia personalizada para o seu negócio.
+      Sou a Madu. Cuido da estratégia, do conteúdo, do criativo, da câmera e dos anúncios. Não vendo só post. Cada publicação tem um porquê.
     </p>
     <a href="https://wa.me/message/5KPVP56WCB5ZC1" class="hero-cta" target="_blank">
       Falar pelo WhatsApp &rarr;
     </a>
+    <!-- PROVA SOCIAL: atualize os números abaixo sempre que quiser -->
     <div class="hero-stats">
+      <div>
+        <span class="hero-stat-num">20+</span>
+        <span class="hero-stat-label">empresas atendidas</span>
+      </div>
       <div>
         <span class="hero-stat-num">37 mil+</span>
         <span class="hero-stat-label">contas alcançadas<br>com R$131,76 investidos</span>
       </div>
       <div>
-        <span class="hero-stat-num">+227%</span>
-        <span class="hero-stat-label">crescimento em<br>interações (O Tropeiro)</span>
+        <span class="hero-stat-num">+432,8%</span>
+        <span class="hero-stat-label">crescimento de alcance<br>(Agrocarnes)</span>
       </div>
       <div>
-        <span class="hero-stat-num">+352%</span>
-        <span class="hero-stat-label">contas alcançadas<br>(Agrocarnes)</span>
+        <span class="hero-stat-num">R$1,19</span>
+        <span class="hero-stat-label">menor custo por conversa<br>iniciada via anúncio</span>
       </div>
     </div>
+    <!-- FIM PROVA SOCIAL -->
   </div>
   <div class="hero-foto-wrapper">
     <img src="img/fotoper.jpg" class="hero-foto-img" alt="Madu Piza">
@@ -497,8 +563,8 @@
 
 <section id="servicos">
   <p class="section-tag">O que eu faço</p>
-  <h2 class="section-title">Um serviço completo,<br>com estratégia no centro.</h2>
-  <p class="section-subtitle">Da análise de perfil ao criativo finalizado. Tudo conectado por um planejamento que faz sentido para o negócio.</p>
+  <h2 class="section-title">Um serviço completo,<br>do planejamento ao relatório.</h2>
+  <p class="section-subtitle">Da análise do perfil ao criativo finalizado, tudo parte de um planejamento que faz sentido para o negócio.</p>
   <div class="servicos-grid">
     <div class="servico-card">
       <div class="servico-icon">&#x1F4CB;</div>
@@ -521,7 +587,7 @@
     <div class="servico-card">
       <div class="servico-icon">&#x1F3AC;</div>
       <h3>Criativo e produção</h3>
-      <p>Gravação no local do cliente, fotografia, edição de vídeo e criativos para feed e anúncios.</p>
+      <p>Do roteiro ao corte final: gravação no local do cliente, fotografia, edição de vídeo e criativos para feed e anúncios.</p>
       <div class="servico-tags"><span class="tag">Reels</span><span class="tag">Carrossel</span><span class="tag">Stories</span><span class="tag">Fotografia</span></div>
     </div>
     <div class="servico-card">
@@ -541,15 +607,16 @@
 
 <section id="cases">
   <p class="section-tag">Cases reais</p>
-  <h2 class="section-title">Resultados com menos<br>de 3 meses de gestão.</h2>
+  <h2 class="section-title">Resultados de gestão real,<br>com números para mostrar.</h2>
   <p class="section-subtitle">Dois perfis com estratégia construída do zero. Planejamento, produção de conteúdo e tráfego pago com relatório mensal.</p>
   <div class="cases-grid">
 
     <div class="case-card">
       <div class="case-header">
         <p class="case-nicho">Restaurante &middot; Comida Mineira &middot; Londrina/PR</p>
-        <h3 class="case-nome">O Tropeiro</h3>
+        <h3 class="case-nome">O Tropeiro <span class="case-encerrado">Gestão encerrada</span></h3>
         <p class="case-descricao">Self-service de almoço, tradição desde 2011</p>
+        <div class="case-duracao"><span class="case-duracao-dot"></span> 3 meses de gestão</div>
         <a href="https://www.instagram.com/otropeirorest?igsh=MTdvbjR0NXdiYTNrMg%3D%3D&utm_source=qr" target="_blank" class="case-ig-link">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
           @otropeirorest
@@ -595,6 +662,7 @@
         <p class="case-nicho">Açougue &middot; Carnes Premium &middot; Londrina/PR</p>
         <h3 class="case-nome">Agrocarnes</h3>
         <p class="case-descricao">Cortes especiais para apreciadores de carne</p>
+        <div class="case-duracao"><span class="case-duracao-dot"></span> 4 meses de gestão · em andamento</div>
         <a href="https://www.instagram.com/agrocarnes.londrina?igsh=MWlxZ2JrdDR3NDd6OQ%3D%3D&utm_source=qr" target="_blank" class="case-ig-link">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
           @agrocarnes.londrina
@@ -603,25 +671,29 @@
       <div class="case-body">
         <div class="metrics-row">
           <div class="metric-box">
-            <span class="metric-num">4.867</span>
+            <span class="metric-num">5.046</span>
             <span class="metric-label">seguidores</span>
             <span class="metric-crescimento">tendência revertida</span>
           </div>
           <div class="metric-box">
-            <span class="metric-num">+352%</span>
+            <span class="metric-num">+432,8%</span>
             <span class="metric-label">contas alcançadas</span>
           </div>
           <div class="metric-box">
-            <span class="metric-num">65%</span>
+            <span class="metric-num">40,1 mil</span>
+            <span class="metric-label">impressões no período</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-num">76%</span>
             <span class="metric-label">CTR no bio site</span>
           </div>
           <div class="metric-box">
-            <span class="metric-num">R$1,74</span>
-            <span class="metric-label">por conversa iniciada via anúncio</span>
+            <span class="metric-num">R$1,19</span>
+            <span class="metric-label">menor custo por conversa via anúncio</span>
           </div>
         </div>
         <div class="case-insight">
-          O perfil chegou com queda de seguidores. Após reestruturação completa de bio, destaques, bio site e cadência de publicação, as contas alcançadas saltaram de <strong>939 para 4.003</strong>. O bio site atingiu <strong>CTR de 65%</strong> com WhatsApp como destino mais acessado. A Campanha Teste dos Assados gerou 19 conversas com R$32,97 investidos.
+          O perfil chegou com queda de seguidores. Após reestruturação completa de bio, destaques, bio site e cadência de publicação, as contas alcançadas saltaram de <strong>939 para mais de 4.000 no primeiro mês</strong>. Hoje, no 4º mês de gestão, o perfil tem <strong>5.046 seguidores</strong>, crescimento de alcance de <strong>+432,8%</strong> e bio site com <strong>CTR de 76%</strong>. Ao longo de 6 campanhas no Meta Ads, foram geradas <strong>222 conversas via mensagem</strong>, com custo mínimo de <strong>R$1,19 por conversa iniciada</strong>.
         </div>
         <div class="case-acoes">
           <h4>O que foi feito</h4>
@@ -641,7 +713,7 @@
 <section id="portfolio">
   <p class="section-tag">Portfólio</p>
   <h2 class="section-title">Criativo, produção<br>e resultados reais.</h2>
-  <p class="section-subtitle">Vídeos gravados no local do cliente, criativos para feed e anúncios, e prints que comprovam o que está escrito nos cases.</p>
+  <p class="section-subtitle">Do roteiro à edição final, tudo produzido por mim no local do cliente: vídeos, criativos para feed e anúncios, e prints que comprovam o que está escrito nos cases.</p>
 
   <div class="portfolio-tabs">
     <button class="ptab active" onclick="showTab('videos', this)">Vídeos e Reels</button>
@@ -649,46 +721,80 @@
     <button class="ptab" onclick="showTab('prints', this)">Prints de resultado</button>
   </div>
 
-  <!-- ABA VIDEOS -->
+  <!-- ABA VÍDEOS -->
   <div class="ptab-content active" id="tab-videos">
     <div class="portfolio-aviso">
       <span>&#x25B6;</span> Clique em qualquer vídeo para assistir em tela cheia
     </div>
-    <div class="portfolio-video-grid">
-      <div class="video-card" onclick="openVideo('video/v1trop.mp4')">
-        <video src="video/v1trop.mp4" preload="metadata" muted playsinline></video>
-        <div class="video-card-overlay">
-          <div class="video-play-btn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="#7B4FBB"><polygon points="5,3 19,12 5,21"/></svg>
+
+    <div class="portfolio-client-section">
+      <div class="portfolio-client-title">Agrocarnes</div>
+      <div class="portfolio-video-grid">
+        <div class="video-card" onclick="openVideo('video/v1agro.mp4')">
+          <video src="video/v1agro.mp4" preload="metadata" muted playsinline></video>
+          <div class="video-card-overlay">
+            <div class="video-play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="#7B4FBB"><polygon points="5,3 19,12 5,21"/></svg></div>
           </div>
-          <span class="video-card-label">O Tropeiro &middot; Reel 1</span>
+        </div>
+        <div class="video-card" onclick="openVideo('video/v2agro.mp4')">
+          <video src="video/v2agro.mp4" preload="metadata" muted playsinline></video>
+          <div class="video-card-overlay">
+            <div class="video-play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="#7B4FBB"><polygon points="5,3 19,12 5,21"/></svg></div>
+          </div>
+        </div>
+        <div class="video-card" onclick="openVideo('video/v%20promo%20contra%20agro.MP4')">
+          <video src="video/v%20promo%20contra%20agro.MP4" preload="metadata" muted playsinline></video>
+          <div class="video-card-overlay">
+            <div class="video-play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="#7B4FBB"><polygon points="5,3 19,12 5,21"/></svg></div>
+          </div>
+        </div>
+        <div class="video-card" onclick="openVideo('video/v%20sorteio%20agro.MP4')">
+          <video src="video/v%20sorteio%20agro.MP4" preload="metadata" muted playsinline></video>
+          <div class="video-card-overlay">
+            <div class="video-play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="#7B4FBB"><polygon points="5,3 19,12 5,21"/></svg></div>
+          </div>
+        </div>
+        <div class="video-card" onclick="openVideo('video/video%20edit%20basic%20agro.MP4')">
+          <video src="video/video%20edit%20basic%20agro.MP4" preload="metadata" muted playsinline></video>
+          <div class="video-card-overlay">
+            <div class="video-play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="#7B4FBB"><polygon points="5,3 19,12 5,21"/></svg></div>
+          </div>
         </div>
       </div>
-      <div class="video-card" onclick="openVideo('video/v2trop.mp4')">
-        <video src="video/v2trop.mp4" preload="metadata" muted playsinline></video>
-        <div class="video-card-overlay">
-          <div class="video-play-btn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="#7B4FBB"><polygon points="5,3 19,12 5,21"/></svg>
+    </div>
+
+    <div class="portfolio-client-section">
+      <div class="portfolio-client-title">O Tropeiro</div>
+      <div class="portfolio-video-grid">
+        <div class="video-card" onclick="openVideo('video/v1trop.mp4')">
+          <video src="video/v1trop.mp4" preload="metadata" muted playsinline></video>
+          <div class="video-card-overlay">
+            <div class="video-play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="#7B4FBB"><polygon points="5,3 19,12 5,21"/></svg></div>
           </div>
-          <span class="video-card-label">O Tropeiro &middot; Reel 2</span>
+        </div>
+        <div class="video-card" onclick="openVideo('video/v2trop.mp4')">
+          <video src="video/v2trop.mp4" preload="metadata" muted playsinline></video>
+          <div class="video-card-overlay">
+            <div class="video-play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="#7B4FBB"><polygon points="5,3 19,12 5,21"/></svg></div>
+          </div>
         </div>
       </div>
-      <div class="video-card" onclick="openVideo('video/v1agro.mp4')">
-        <video src="video/v1agro.mp4" preload="metadata" muted playsinline></video>
-        <div class="video-card-overlay">
-          <div class="video-play-btn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="#7B4FBB"><polygon points="5,3 19,12 5,21"/></svg>
+    </div>
+
+    <div class="portfolio-client-section">
+      <div class="portfolio-client-title">Conexão Esportiva &middot; Campanha Dia das Mães</div>
+      <div class="portfolio-video-grid">
+        <div class="video-card" onclick="openVideo('video/v%20dia%20maes%20campanha.MP4')">
+          <video src="video/v%20dia%20maes%20campanha.MP4" preload="metadata" muted playsinline></video>
+          <div class="video-card-overlay">
+            <div class="video-play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="#7B4FBB"><polygon points="5,3 19,12 5,21"/></svg></div>
           </div>
-          <span class="video-card-label">Agrocarnes &middot; Reel 1</span>
         </div>
-      </div>
-      <div class="video-card" onclick="openVideo('video/v2agro.mp4')">
-        <video src="video/v2agro.mp4" preload="metadata" muted playsinline></video>
-        <div class="video-card-overlay">
-          <div class="video-play-btn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="#7B4FBB"><polygon points="5,3 19,12 5,21"/></svg>
+        <div class="video-card" onclick="openVideo('video/v2%20dia%20das%20maes%20campanha.MP4')">
+          <video src="video/v2%20dia%20das%20maes%20campanha.MP4" preload="metadata" muted playsinline></video>
+          <div class="video-card-overlay">
+            <div class="video-play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="#7B4FBB"><polygon points="5,3 19,12 5,21"/></svg></div>
           </div>
-          <span class="video-card-label">Agrocarnes &middot; Reel 2</span>
         </div>
       </div>
     </div>
@@ -699,18 +805,46 @@
     <div class="portfolio-aviso">
       <span>&#x1F50D;</span> Clique em qualquer imagem para ampliar
     </div>
-    <div class="portfolio-grid criativos-grid">
-      <div class="portfolio-item" onclick="openLightbox('img/c1agro.png', 'Kit Express Agrocarnes')">
-        <img src="img/c1agro.png" alt="Kit Express Agrocarnes" loading="lazy">
+
+    <div class="portfolio-client-section">
+      <div class="portfolio-client-title">Agrocarnes</div>
+      <div class="portfolio-grid criativos-grid">
+        <div class="portfolio-item" onclick="openLightbox('img/c1agro.png', 'Kit Express')">
+          <img src="img/c1agro.png" alt="Kit Express Agrocarnes" loading="lazy">
+        </div>
+        <div class="portfolio-item" onclick="openLightbox('img/c2agro.png', 'Criativo Agrocarnes')">
+          <img src="img/c2agro.png" alt="Criativo Agrocarnes" loading="lazy">
+        </div>
+        <div class="portfolio-item" onclick="openLightbox('img/Kits churrasco agro.png', 'Kits Churrasco')">
+          <img src="img/Kits churrasco agro.png" alt="Kits Churrasco Agrocarnes" loading="lazy">
+        </div>
+        <div class="portfolio-item" onclick="openLightbox('img/banner contra agro.png', 'Banner Contra Filé')">
+          <img src="img/banner contra agro.png" alt="Banner Contra Filé Agrocarnes" loading="lazy">
+        </div>
+        <div class="portfolio-item" onclick="openLightbox('img/post tabela preço agro.png', 'Tabela de Preços')">
+          <img src="img/post tabela preço agro.png" alt="Tabela de Preços Agrocarnes" loading="lazy">
+        </div>
       </div>
-      <div class="portfolio-item" onclick="openLightbox('img/c2agro.png', 'Cardápio O Tropeiro')">
-        <img src="img/c2agro.png" alt="Cardápio O Tropeiro" loading="lazy">
+    </div>
+
+    <div class="portfolio-client-section">
+      <div class="portfolio-client-title">O Tropeiro</div>
+      <div class="portfolio-grid criativos-grid">
+        <div class="portfolio-item" onclick="openLightbox('img/c1trop.png', 'Criativo O Tropeiro')">
+          <img src="img/c1trop.png" alt="Criativo O Tropeiro" loading="lazy">
+        </div>
+        <div class="portfolio-item" onclick="openLightbox('img/c2trop.jpeg', 'Sucos O Tropeiro')">
+          <img src="img/c2trop.jpeg" alt="Sucos O Tropeiro" loading="lazy">
+        </div>
       </div>
-      <div class="portfolio-item" onclick="openLightbox('img/c1trop.png', 'Agrocarnes no iFood')">
-        <img src="img/c1trop.png" alt="Agrocarnes no iFood" loading="lazy">
-      </div>
-      <div class="portfolio-item" onclick="openLightbox('img/c2trop.jpeg', 'Sucos O Tropeiro')">
-        <img src="img/c2trop.jpeg" alt="Sucos O Tropeiro" loading="lazy">
+    </div>
+
+    <div class="portfolio-client-section">
+      <div class="portfolio-client-title">Conexão Esportiva &middot; Campanha Dia das Mães</div>
+      <div class="portfolio-grid criativos-grid">
+        <div class="portfolio-item" onclick="openLightbox('img/criativo conexao.png', 'Criativo Conexão Esportiva')">
+          <img src="img/criativo conexao.png" alt="Criativo Conexão Esportiva" loading="lazy">
+        </div>
       </div>
     </div>
   </div>
@@ -720,19 +854,46 @@
     <div class="portfolio-aviso">
       <span>&#x1F50D;</span> Clique em qualquer print para ampliar
     </div>
-    <div class="prints-titulo">O Tropeiro &middot; março/2026</div>
-    <div class="prints-grid">
-      <div class="print-thumb"><img src="img/visutrop.png" alt="Visualizações O Tropeiro" loading="lazy"></div>
-      <div class="print-thumb"><img src="img/interacaotrop.png" alt="Interações O Tropeiro" loading="lazy"></div>
-      <div class="print-thumb"><img src="img/perfiltropseguidores.png" alt="Seguidores O Tropeiro" loading="lazy"></div>
-      <div class="print-thumb"><img src="img/campanhatrop.png" alt="Meta Ads O Tropeiro" loading="lazy"></div>
+
+    <div class="portfolio-client-section">
+      <div class="portfolio-client-title">Agrocarnes</div>
+      <div class="prints-titulo">Resultados gerais &middot; em andamento</div>
+      <div class="prints-grid">
+        <div class="print-thumb"><img src="img/metrica visu atual agro.jpeg" alt="Alcance atual Agrocarnes" loading="lazy"></div>
+        <div class="print-thumb"><img src="img/perfil atual agro.jpeg" alt="Perfil atual Agrocarnes" loading="lazy"></div>
+        <div class="print-thumb"><img src="img/resultados campanhasagrocarnes.png" alt="Resultados de campanhas Agrocarnes" loading="lazy"></div>
+        <div class="print-thumb"><img src="img/bio site agro atual.png" alt="Bio site atual Agrocarnes" loading="lazy"></div>
+      </div>
+      <div class="prints-titulo">Início da gestão &middot; fevereiro/2026</div>
+      <div class="prints-grid">
+        <div class="print-thumb"><img src="img/visuagro.png" alt="Contas alcançadas Agrocarnes" loading="lazy"></div>
+        <div class="print-thumb"><img src="img/biositeagro.png" alt="Bio site CTR Agrocarnes" loading="lazy"></div>
+        <div class="print-thumb"><img src="img/campanhaagro.png" alt="Campanha assados Agrocarnes" loading="lazy"></div>
+        <div class="print-thumb"><img src="img/perfilagro.png" alt="Perfil antes e depois Agrocarnes" loading="lazy"></div>
+      </div>
     </div>
-    <div class="prints-titulo">Agrocarnes &middot; fevereiro/2026</div>
-    <div class="prints-grid">
-      <div class="print-thumb"><img src="img/visuagro.png" alt="Contas alcançadas Agrocarnes" loading="lazy"></div>
-      <div class="print-thumb"><img src="img/biositeagro.png" alt="Bio site CTR Agrocarnes" loading="lazy"></div>
-      <div class="print-thumb"><img src="img/campanhaagro.png" alt="Campanha assados Agrocarnes" loading="lazy"></div>
-      <div class="print-thumb"><img src="img/perfilagro.png" alt="Perfil antes e depois Agrocarnes" loading="lazy"></div>
+
+    <div class="portfolio-client-section">
+      <div class="portfolio-client-title">O Tropeiro &middot; gestão encerrada</div>
+      <div class="prints-titulo">Resultados &middot; março/2026</div>
+      <div class="prints-grid">
+        <div class="print-thumb"><img src="img/visutrop.png" alt="Visualizações O Tropeiro" loading="lazy"></div>
+        <div class="print-thumb"><img src="img/interacaotrop.png" alt="Interações O Tropeiro" loading="lazy"></div>
+        <div class="print-thumb"><img src="img/perfiltropseguidores.png" alt="Seguidores O Tropeiro" loading="lazy"></div>
+        <div class="print-thumb"><img src="img/campanhatrop.png" alt="Meta Ads O Tropeiro" loading="lazy"></div>
+      </div>
+      <div class="prints-titulo">Perfil hoje &middot; após encerramento</div>
+      <div class="prints-grid">
+        <div class="print-thumb"><img src="img/perfil atual trop.jpeg" alt="Perfil O Tropeiro hoje" loading="lazy"></div>
+      </div>
+      <p class="print-nota">Após o encerramento da gestão, o perfil parou de publicar. Os seguidores e o alcance não cresceram mais, o que evidencia o impacto direto da gestão ativa nos resultados.</p>
+    </div>
+
+    <div class="portfolio-client-section">
+      <div class="portfolio-client-title">Conexão Esportiva &middot; Campanha Dia das Mães</div>
+      <div class="prints-grid">
+        <div class="print-thumb"><img src="img/campanha maes conexao esportiva.png" alt="Resultado campanha Dia das Mães" loading="lazy"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -742,19 +903,24 @@
     <div>
       <p class="section-tag">Diferencial</p>
       <h2 class="section-title">IA no processo,<br>não no lugar da estratégia.</h2>
-      <p class="ia-desc">O conteúdo real é produzido por mim, no local do cliente: vídeos, fotos e criativos gravados e editados do zero. A inteligência artificial entra como ferramenta de apoio em dois pontos específicos.</p>
-      <p class="ia-desc2">Estou expandindo esse uso no dia a dia e vou compartilhar esse processo no meu Instagram em breve.</p>
+      <p class="ia-desc">O conteúdo é produzido por mim, no local do cliente: vídeos, fotos e criativos gravados e editados do zero. A inteligência artificial entra como ferramenta de apoio em dois pontos específicos.</p>
+      <p class="ia-desc2">Esse é um processo que estou documentando e vou compartilhar no meu Instagram.</p>
     </div>
     <div class="ia-cards">
       <div class="ia-card">
+        <div class="ia-card-icon">&#x1F916;</div>
+        <h3>Agentes de IA</h3>
+        <p>Criação de agentes para automatizar atendimento inicial, qualificação de leads, vendas e agendamentos. O cliente é atendido na hora, sem depender de resposta manual.</p>
+      </div>
+      <div class="ia-card">
         <div class="ia-card-icon">&#x1F310;</div>
-        <h3>Páginas simples de front</h3>
+        <h3>Páginas de front</h3>
         <p>Bio sites e landing pages funcionais criados com apoio de IA e integrados à estratégia do cliente.</p>
       </div>
       <div class="ia-card">
         <div class="ia-card-icon">&#x26A1;</div>
         <h3>Automação de processos</h3>
-        <p>Exploração de fluxos automatizados para ganhar eficiência e focar mais em estratégia.</p>
+        <p>Ferramentas que automatizam tarefas repetitivas, deixando mais espaço para estratégia.</p>
       </div>
     </div>
   </div>
@@ -764,9 +930,9 @@
   <div class="sobre-text">
     <p class="section-tag">Quem faz isso</p>
     <h2 class="section-title">Maria Eduarda<br>de Melo Piza</h2>
-    <p>Sou gestora de marketing com foco em negócios locais que precisam de <strong>presença digital com propósito</strong>. Não faço só conteúdo: faço estratégia, produção, anúncios e análise.</p>
+    <p>Sou gestora de marketing com foco em negócios locais. Não faço só conteúdo: faço estratégia, produção, anúncios e análise.</p>
     <p>Acredito que marketing bom é aquele que entende o negócio antes de criar qualquer post. Por isso cada cliente começa com um planejamento estratégico.</p>
-    <p>Sou curiosa por natureza: uso <strong>inteligência artificial</strong> no processo e estou construindo um espaço para compartilhar isso com outros profissionais de marketing.</p>
+    <p>Uso <strong>inteligência artificial</strong> no processo e estou construindo um espaço para compartilhar isso com outros profissionais de marketing.</p>
     <div class="sobre-skills">
       <span class="skill-pill">Gestão de Instagram</span>
       <span class="skill-pill">Meta Ads</span>
@@ -794,7 +960,7 @@
 <section id="contato">
   <p class="section-tag">Vamos conversar</p>
   <h2 class="section-title">Pronto para ter um<br>marketing com estratégia?</h2>
-  <p class="section-subtitle">Me conta sobre o seu negócio. A primeira conversa é sem compromisso e já começa com escuta de verdade.</p>
+  <p class="section-subtitle">Me conta sobre o seu negócio. A primeira conversa é sem compromisso.</p>
   <a href="https://wa.me/message/5KPVP56WCB5ZC1" class="cta-btn" target="_blank">
     Falar pelo WhatsApp &rarr;
   </a>
@@ -803,7 +969,6 @@
     <a href="https://www.instagram.com/madu.piza?igsh=YzZpa2d4NnMwcXU3&utm_source=qr" target="_blank">@madu.piza</a>
   </p>
 </section>
-</section>
 
 <!-- LIGHTBOX (prints e criativos) -->
 <div class="lightbox" id="lightbox">
@@ -811,7 +976,7 @@
   <img id="lightboxImg" src="" alt="">
 </div>
 
-<!-- MODAL DE VIDEO 9:16 -->
+<!-- MODAL DE VÍDEO 9:16 -->
 <div class="video-modal" id="videoModal">
   <div class="video-modal-inner">
     <button class="video-modal-close" id="videoModalClose">&#x2715;</button>
@@ -820,11 +985,11 @@
 </div>
 
 <footer>
-  <p>&copy; 2026 <span>Maria Eduarda de Melo Piza</span> &middot; Gestao de Marketing Digital &middot; Londrina/PR</p>
+  <p>&copy; 2026 <span>Maria Eduarda de Melo Piza</span> &middot; Gestão de Marketing Digital &middot; Londrina/PR</p>
 </footer>
 
 <script>
-  /* Lightbox para prints E criativos */
+  /* Lightbox para prints e criativos */
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
 
@@ -837,12 +1002,11 @@
   document.getElementById('lightboxClose').addEventListener('click', () => lightbox.classList.remove('open'));
   lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.classList.remove('open'); });
 
-  // prints via delegacao (mantendo compatibilidade)
   document.querySelectorAll('.print-thumb img').forEach(img => {
     img.parentElement.addEventListener('click', () => openLightbox(img.src, img.alt));
   });
 
-  /* Modal de video 9:16 */
+  /* Modal de vídeo 9:16 */
   const videoModal = document.getElementById('videoModal');
   const videoModalPlayer = document.getElementById('videoModalPlayer');
 
@@ -901,7 +1065,7 @@
   const revealEls = document.querySelectorAll(
     '.servico-card, .case-card, .metric-box, .ia-card, .print-thumb, ' +
     '.portfolio-item, .video-card, .sobre-visual, .sobre-text, ' +
-    '.section-tag, .section-title, .section-subtitle, .linha-do-tempo li, ' +
+    '.section-title, .section-subtitle, .linha-do-tempo li, ' +
     '.sobre-skills, .cta-btn, .cta-note'
   );
   revealEls.forEach((el) => {
@@ -909,7 +1073,7 @@
     const parent = el.parentElement;
     const siblings = [...parent.children].filter(c => c.classList.contains('reveal'));
     const idx = siblings.indexOf(el);
-    if (idx > 0) el.style.transitionDelay = (idx * 0.07) + 's';
+    if (idx > 0) el.style.transitionDelay = (idx * 0.08) + 's';
   });
 
   const observer = new IntersectionObserver((entries) => {
@@ -919,8 +1083,23 @@
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.10 });
   revealEls.forEach(el => observer.observe(el));
+
+  /* Tags de seção: slide da esquerda */
+  document.querySelectorAll('.section-tag').forEach(el => {
+    el.classList.add('reveal-left');
+    observer.observe(el);
+  });
+
+  /* Parallax suave no hero */
+  const heroBg = document.querySelector('.hero-bg');
+  function updateParallax() {
+    const scrollY = window.scrollY;
+    if (scrollY < window.innerHeight && heroBg) {
+      heroBg.style.transform = 'translateY(' + (scrollY * 0.18) + 'px)';
+    }
+  }
 
   /* Animated counters */
   function animateCounter(el) {
@@ -982,8 +1161,10 @@
   window.addEventListener('scroll', () => {
     updateProgress();
     updateNav();
+    updateParallax();
   }, { passive: true });
   updateNav();
+  updateParallax();
 </script>
 </body>
 </html>
